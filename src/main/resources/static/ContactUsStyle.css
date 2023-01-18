@@ -8,7 +8,7 @@ body {
     height: 100vh;
     background: -webkit-linear-gradient(left, #25c481, #25b7c4);
     display: flex;
-    font-family:SansSerif;
+    font-family: "font-awesome", SansSerif;
     justify-content: center;
     align-items: center;
 }

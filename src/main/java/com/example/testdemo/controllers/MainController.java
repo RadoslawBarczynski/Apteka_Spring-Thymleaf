@@ -53,6 +53,11 @@ public class MainController {
         return "contactPage";
     }
 
+    @GetMapping("/about")
+    public String AboutUsPage(){
+        return "aboutUsPage";
+    }
+
     @RequestMapping(value="searchMedicine", method = RequestMethod.POST)
     public String SearchOne(@ModelAttribute Chemicals chemicals,Model model, String name){
         List<Chemicals> ListAllMedicines = chemicalsService.GetAllChemicals();
