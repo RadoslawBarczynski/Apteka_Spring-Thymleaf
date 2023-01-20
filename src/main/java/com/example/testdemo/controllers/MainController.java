@@ -1,10 +1,12 @@
 package com.example.testdemo.controllers;
 
 import com.example.testdemo.Repositories.ChemicalsRepository;
+import com.example.testdemo.Repositories.ReceiptRepository;
 import com.example.testdemo.Repositories.UsersRepository;
 import com.example.testdemo.model.CartItem;
 import com.example.testdemo.model.Chemicals;
 import com.example.testdemo.model.NewMedicine;
+import com.example.testdemo.model.Receipt;
 import com.example.testdemo.services.CartService;
 import com.example.testdemo.services.ChemicalsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +25,14 @@ public class MainController {
 
     @Autowired
     ChemicalsService chemicalsService;
-
     @Autowired
     UsersRepository usersRepository;
-
     @Autowired
     CartService cartService;
-
     @Autowired
     ChemicalsRepository chemicalsRepository;
+    @Autowired
+    ReceiptRepository receiptRepository;
 
     @GetMapping("/")
     public String DefPage(Model model){
@@ -57,6 +58,22 @@ public class MainController {
     public String AboutUsPage(){
         return "aboutUsPage";
     }
+
+    @GetMapping("/receipt")
+    public String ReceiptPage(){
+        return "receiptPage";
+    }
+
+    @RequestMapping(value="searchReceipt", method = RequestMethod.POST)
+    public String SearchReceipt(@ModelAttribute Chemicals chemicals, Model model, String code){
+        List<Receipt> ListReceipt = receiptRepository.findAll();
+        List<Chemicals> ListAllMedicines = chemicalsService.GetAllChemicals();
+        Receipt temp = ListReceipt.stream().filter(recepta -> recepta.getReceiptCode().equals(code)).findFirst().orElse(null);
+        System.out.println(temp.getReceiptCode());
+        model.addAttribute("medicine", temp.getChemical());
+        return "searchReceipt";
+    }
+
 
     @RequestMapping(value="searchMedicine", method = RequestMethod.POST)
     public String SearchOne(@ModelAttribute Chemicals chemicals,Model model, String name){
@@ -121,7 +138,6 @@ public class MainController {
         model.addAttribute("medicine", findAll);
         return "redirect:/showCart?";
     }
-
 
 
     @GetMapping("/update/{id}")

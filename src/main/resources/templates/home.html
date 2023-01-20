@@ -10,20 +10,21 @@
 <div class="topnav">
     <a class="active">MEDLAB</a>
     <a href="/home">Home</a>
+    <a href="/receipt">Receipt</a>
     <a href="/contact">Contact</a>
     <a href="/about">About</a>
-    <form th:action="@{/logout}" method="post">
-        <p>
-            Welcome <b>[[${#request.userPrincipal.principal.username}]]</b>
-            <input type="submit" value="Sign Out" />
-        </p>
-    </form>
     <div class="searchComp">
     <form action="searchMedicine" method="post">
             <input type="text" placeholder="Search.." name="name">
                 <button type="submit" value="Add"><i class="fa fa-search"></i></button>
 
     </form>
+    </div>
+    <div class="logoutDiv">
+        <form th:action="@{/logout}" method="post">
+                <span>Welcome <b>[[${#request.userPrincipal.principal.username}]]</b></span>
+            <button type="submit" value="Add">Sign out</button>
+        </form>
     </div>
     <div class="addComp" th:if="${#request.userPrincipal.principal.isAdmin}">
         <form action="showAddPage" method="get">
@@ -61,14 +62,16 @@
         </tr>
         </tbody>
     </table><br />
+    <td>
+    </td>
+</div>
+</div>
+<div class="formButton">
     <form action="showCart" method="get">
         <div th:if="${#request.userPrincipal.principal.isAdmin == false}">
             <button type="submit" value="Add">YourCart</button>
         </div>
     </form>
-    <td>
-    </td>
-</div>
 </div>
 <div class="subtitles">By Radoslaw Barczynski</div>
 </body>

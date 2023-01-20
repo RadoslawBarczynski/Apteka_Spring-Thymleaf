@@ -10,7 +10,7 @@ h1{
 .searchComp{
     position: fixed;
     left: 70%;
-    top: 1%;
+    top: 0.5%;
     font-family: SansSerif;
 }
 
@@ -45,36 +45,57 @@ h1{
     display: table;
 }
 
-.addComp{
-    text-align: left;
+.logoutDiv{
     position: fixed;
-    top: 2%;
-    left:50%;
+    left: 30%;
+    top: 0.5%;
     font-family: SansSerif;
+    color: white;
 }
-
-
-.addComp button{
-    font-family: SansSerif;
-    width:100%;
-    height: 20px;
-    border: 1px solid;
-    background: #2691d9;
-    border-radius: 17px;
+.logoutDiv span{
     font-size: 17px;
-    color: #e9f4fb;
-    font-weight: 700;
-    cursor: pointer;
-    outline: none;
 }
 
-.addComp button:hover{
-    background: #217ab7;
+.logoutDiv button, .addComp button{
+    font-family: Roboto, sans-serif;
+    font-weight: 0;
+    font-size: 15px;
+    color: #fff;
+    background-color: #e30c0c;
+    padding: 8px 26px;
+    border: 2px solid #e30c0c;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+    border-radius: 50px;
+    transition : 1000ms;
+    transform: translateY(0);
+    align-items: center;
+    cursor: pointer;
 }
+
+.logoutDiv button:hover{
+    transition : 1000ms;
+    padding: 8px 50px;
+    transform : translateY(-0px);
+    background-color: #fff;
+    color: #e30c0c;
+    border: solid 2px #e30c0c;
+}
+
+.addComp{
+    position: fixed;
+    left: 50%;
+    top: 0.5%;
+    font-family: SansSerif;
+    color: white;
+}
+
 
 .center{
     position: fixed;
     top:10%;
+    height: 500px;
+    border: none;
+    overflow: auto;
 }
 .subtitles {
     position: absolute;
@@ -84,6 +105,42 @@ h1{
     color: white;
 }
 
+.formButton{
+    position: absolute;
+    top: 90%;
+    left:2%;
+}
+
+.formButton button, .addComp button{
+    font-family: Roboto, sans-serif;
+    font-weight: 0;
+    font-size: 18px;
+    color: #fff;
+    background-color: #0066CC;
+    padding: 8px 30px;
+    border: 2px solid #0066cc;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+    border-radius: 50px;
+    transition : 1000ms;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.formButton button:hover, .addComp button:hover{
+
+    transition : 1000ms;
+    padding: 8px 50px;
+    transform : translateY(-0px);
+    background-color: #fff;
+    color: #0066cc;
+    border: solid 2px #0066cc;
+}
+
+
 .topnav {
     position: fixed;
     width: 100%;
@@ -91,6 +148,24 @@ h1{
     left: 0;
     background-color: #333;
     overflow: hidden;
+}
+
+.logoutButton {
+    font-family: Roboto, sans-serif;
+    font-weight: 0;
+    font-size: 15px;
+    color: #fff;
+    background-color: #0066CC;
+    padding: 10px 30px;
+    border: 2px solid #0066cc;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+    border-radius: 50px;
+    transition : 1000ms;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
 }
 
 /* Style the links inside the navigation bar */

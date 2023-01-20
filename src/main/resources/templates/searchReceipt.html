@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <link rel="stylesheet" href="test.css">
 <head>
     <meta charset="UTF-8">
@@ -34,8 +34,7 @@
             <td th:text="${medicine.numberOfElements}" ></td>
             <td th:text="${medicine.Grammage}"></td>
             <td th:text="${medicine.price}" ></td>
-            <td th:if="${#request.userPrincipal.principal.isAdmin == false}">><a class="ReservationBtn" th:href="@{'/home/' + ${medicine.id}}">Add</a></td>
-            <td th:if="${#request.userPrincipal.principal.isAdmin}"><a class="ReservationBtn" th:href="@{'/update/' + ${medicine.id}}">Edit</a></td>
+            <td ><a class="ReservationBtn" th:href="@{'/home/' + ${medicine.id}}">Add</a></td>
         </tr>
         </tbody>
     </table>
