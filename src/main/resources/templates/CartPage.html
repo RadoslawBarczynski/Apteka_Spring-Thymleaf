@@ -20,6 +20,7 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Name</th>
+      <th scope="col">Weight</th>
       <th scope="col">Price</th>
       <th scope="col"></th>
     </tr>
@@ -28,6 +29,7 @@
     <tr th:each="medicine : ${medicine}">
       <td th:text="${medicine.id}" ></td>
       <td th:text="${medicine.chemicals.name}" ></td>
+      <td th:text="${medicine.chemicals.grammage}" ></td>
       <td th:text="${medicine.chemicals.price}" ></td>
       <td><a class="ReservationBtn" th:href="@{'/showCart/' + ${medicine.id}}">Delete</a></td>
     </tr>

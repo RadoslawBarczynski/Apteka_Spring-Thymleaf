@@ -81,7 +81,7 @@ public class MainController {
         }else{
             System.out.println("New Chemical");
             long temp = chemicalsService.amountToLong(ListAllMedicines.size());
-            Chemicals chemi = new Chemicals(temp, medicine.getName(),medicine.getAmount(), medicine.getPrice());
+            Chemicals chemi = new Chemicals(temp, medicine.getName(),medicine.getAmount(), medicine.getPrice(), medicine.getGrammage());
             chemicalsService.AddNewChemical(chemi);
         }
         return "redirect:/home";
@@ -139,6 +139,7 @@ public class MainController {
             thischemix.get().setName(chemicals.getName());
             thischemix.get().setPrice(chemicals.getPrice());
             thischemix.get().setNumberOfElements(chemicals.getNumberOfElements());
+            thischemix.get().setGrammage(chemicals.getGrammage());
         }
         chemicalsRepository.save(thischemix.get());
         return "redirect:/home";

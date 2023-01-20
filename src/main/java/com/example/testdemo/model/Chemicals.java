@@ -16,11 +16,12 @@ public class Chemicals {
         this.id = id;
     }
 
-    public Chemicals(Long id, String name, Long numberOfElements, Double price) {
+    public Chemicals(Long id, String name, Long numberOfElements, Double price, String Grammage) {
         this.id = id;
         this.name = name;
         this.numberOfElements = numberOfElements;
         this.price = price;
+        this.Grammage = Grammage;
     }
 
     @Column(name="AmountOfChemicals")
@@ -56,6 +57,17 @@ public class Chemicals {
 
     @Column(name="Price")
     private Double price;
+
+    @Column(name="grammage")
+    private String Grammage;
+
+    public String getGrammage() {
+        return Grammage;
+    }
+
+    public void setGrammage(String grammage) {
+        Grammage = grammage;
+    }
 
     public Chemicals() {
 

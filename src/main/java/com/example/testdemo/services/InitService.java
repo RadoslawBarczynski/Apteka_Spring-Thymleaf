@@ -23,9 +23,9 @@ public class InitService {
         Users u1 = usersRepository.save(new Users(1L, "user", "pass", false ));
         Users u2 = usersRepository.save(new Users(2L, "admin", "admin", true ));
 
-        Chemicals ch1 = chemicalsRepository.save(new Chemicals(1L, "Cholinex", 5L, 23.99));
-        Chemicals ch2 = chemicalsRepository.save(new Chemicals(2L, "Polopiryna", 7L, 13.99));
-        Chemicals ch3 = chemicalsRepository.save(new Chemicals(3L, "Gripex", 2L, 20.99));
-        Chemicals ch4 = chemicalsRepository.save(new Chemicals(4L, "Ketanol", 3L, 53.99));
+        Chemicals ch1 = chemicalsRepository.save(new Chemicals(1L, "Cholinex", 5L, 23.99, "5mg"));
+        Chemicals ch2 = chemicalsRepository.save(new Chemicals(2L, "Polopiryna", 7L, 13.99, "2mg"));
+        Chemicals ch3 = chemicalsRepository.save(new Chemicals(3L, "Gripex", 2L, 20.99, "10g"));
+        Chemicals ch4 = chemicalsRepository.save(new Chemicals(4L, "Ketanol", 3L, 53.99, "5mg"));
     }
 }

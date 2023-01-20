@@ -21,6 +21,7 @@
             <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Amount</th>
+            <th scope="col">Weight</th>
             <th scope="col">Price</th>
             <th scope="col"></th>
         </tr>
@@ -30,6 +31,7 @@
             <td th:text="${medicine.id}" ></td>
             <td th:text="${medicine.name}" ></td>
             <td th:text="${medicine.numberOfElements}" ></td>
+            <td th:text="${medicine.Grammage}"></td>
             <td th:text="${medicine.price}" ></td>
             <td th:if="${#request.userPrincipal.principal.isAdmin == false}">><a class="ReservationBtn" th:href="@{'/home/' + ${medicine.id}}">Add</a></td>
             <td th:if="${#request.userPrincipal.principal.isAdmin}"><a class="ReservationBtn" th:href="@{'/update/' + ${medicine.id}}">Edit</a></td>
