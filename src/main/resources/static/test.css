@@ -68,6 +68,10 @@ h1{
     outline: none;
 }
 
+.addComp button:hover{
+    background: #217ab7;
+}
+
 .center{
     position: fixed;
     top:10%;
