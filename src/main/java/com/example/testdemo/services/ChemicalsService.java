@@ -4,9 +4,15 @@ import com.example.testdemo.Repositories.CartRepository;
 import com.example.testdemo.Repositories.ChemicalsRepository;
 import com.example.testdemo.model.CartItem;
 import com.example.testdemo.model.Chemicals;
+import org.aspectj.weaver.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 

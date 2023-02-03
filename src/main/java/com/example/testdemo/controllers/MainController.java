@@ -10,14 +10,15 @@ import com.example.testdemo.model.Receipt;
 import com.example.testdemo.services.CartService;
 import com.example.testdemo.services.ChemicalsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
+import java.util.*;
 
 
 @Controller
@@ -39,6 +40,29 @@ public class MainController {
         return "redirect:/login";
     }
 
+    @GetMapping("/home")
+    public String listChemicals(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int size){
+        try{
+            List<Chemicals> chemicals = new ArrayList<Chemicals>();
+            Pageable paging = PageRequest.of(page - 1, size);
+
+            Page<Chemicals> pageTuts;
+            pageTuts = chemicalsRepository.findAll(paging);
+
+            chemicals = pageTuts.getContent();
+            model.addAttribute("ListMedicines", chemicals);
+        }catch(Exception e){
+            System.out.println("bug");
+        }
+        return "home";
+    }
+
+    /*@GetMapping("/home")
+    public Page<Chemicals> findAll(@RequestParam int page, @RequestParam int size){
+        PageRequest pr = PageRequest.of(page, size);
+        chemicalsRepository.findAll(pr);
+        return "home";
+    }
 
 
     @GetMapping("/home")
@@ -47,7 +71,7 @@ public class MainController {
         List<Chemicals> findAll = chemicalsService.GetAllChemicals();
         model.addAttribute("ListMedicines", findAll);
         return "home";
-    }
+    }*/
 
     @GetMapping("/contact")
     public String ContactUsPage(){
@@ -95,7 +119,7 @@ public class MainController {
         if(!find.isEmpty()) {
             Chemicals tempChem = find.get(0);
             chemicalsService.Increment2(tempChem.getId());
-        }else{
+        } else{
             System.out.println("New Chemical");
             long temp = chemicalsService.amountToLong(ListAllMedicines.size());
             Chemicals chemi = new Chemicals(temp, medicine.getName(),medicine.getAmount(), medicine.getPrice(), medicine.getGrammage());

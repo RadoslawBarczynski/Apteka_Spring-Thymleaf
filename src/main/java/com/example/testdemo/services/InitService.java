@@ -31,6 +31,8 @@ public class InitService {
         Chemicals ch2 = chemicalsRepository.save(new Chemicals(2L, "Polopiryna", 7L, 13.99, "2mg"));
         Chemicals ch3 = chemicalsRepository.save(new Chemicals(3L, "Gripex", 2L, 20.99, "10g"));
         Chemicals ch4 = chemicalsRepository.save(new Chemicals(4L, "Ketanol", 3L, 53.99, "5mg"));
+        Chemicals ch5 = chemicalsRepository.save(new Chemicals(5L, "Avis", 3L, 53.99, "5mg"));
+        Chemicals ch6 = chemicalsRepository.save(new Chemicals(6L, "Kolejny", 3L, 53.99, "5mg"));
 
         Receipt r1 = receiptRepository.save(new Receipt(1L, "123", ch1));
         Receipt r2 = receiptRepository.save(new Receipt(2L, "456", ch2));
