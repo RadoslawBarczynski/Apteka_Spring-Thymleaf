@@ -5,7 +5,6 @@ import java.util.Collection;
 import com.example.testdemo.model.Users;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Service;
 
 public class CustomUserDetails implements UserDetails {
 

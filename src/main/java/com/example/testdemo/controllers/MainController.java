@@ -40,6 +40,7 @@ public class MainController {
         return "redirect:/login";
     }
 
+    //paging code fragment with parameters
     @GetMapping("/home")
     public String listChemicals(Model model, @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int size){
         try{
@@ -56,22 +57,6 @@ public class MainController {
         }
         return "home";
     }
-
-    /*@GetMapping("/home")
-    public Page<Chemicals> findAll(@RequestParam int page, @RequestParam int size){
-        PageRequest pr = PageRequest.of(page, size);
-        chemicalsRepository.findAll(pr);
-        return "home";
-    }
-
-
-    @GetMapping("/home")
-    //@RequestMapping(value="/login", method = RequestMethod.POST)
-    public String HomePage(Model model){
-        List<Chemicals> findAll = chemicalsService.GetAllChemicals();
-        model.addAttribute("ListMedicines", findAll);
-        return "home";
-    }*/
 
     @GetMapping("/contact")
     public String ContactUsPage(){
