@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     permissions: read-all
     steps:
       - uses: actions/checkout@v2
@@ -22,26 +22,17 @@ jobs:
       - name: Cache SonarQube packages
         uses: actions/cache@v1
         with:
-          path: ~\sonar\cache
+          path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-      - name: Cache SonarQube scanner
-        id: cache-sonar-scanner
+      - name: Cache Maven packages
         uses: actions/cache@v1
         with:
-          path: .\.sonar\scanner
-          key: ${{ runner.os }}-sonar-scanner
-          restore-keys: ${{ runner.os }}-sonar-scanner
-      - name: Install SonarQube scanner
-        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-        shell: powershell
-        run: |
-          New-Item -Path .\.sonar\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
       - name: Build and analyze
         env:
-        shell: powershell
-        run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"RadoslawBarczynski_Apteka_Spring-Thymleaf_AYu1OWbHIIkTEMMfpnu3" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
-          dotnet build
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=RadoslawBarczynski_Apteka_Spring-Thymleaf_AYu1OWbHIIkTEMMfpnu3 -Dsonar.projectName='Apteka_Spring-Thymleaf'
